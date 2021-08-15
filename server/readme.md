@@ -6,7 +6,7 @@
 
 2. Clone/extract the contents of this directory into your server's root directory. 
 
-3. Install tiddlywiki globally on your server by running `npm install -g tiddlywiki`. If you need help setting this up or figuring out how to secure it with a login, check out [this guide](I set one up on a Digital Ocean server in [this guide](https://mydigitalmark.com/add-login-to-nodejs-with-cloudflare-argo-tunnels/).
+3. Install tiddlywiki globally on your server by running `npm install -g tiddlywiki`. If you need help setting this up or figuring out how to secure it with a login, check out [this guide](https://mydigitalmark.com/add-login-to-nodejs-with-cloudflare-argo-tunnels/).
 
 4. In order to send SMS with Twilio, you need to set up a Twilio account. 
 - Use your "From" number and your auth code to update the file `tiddlers/$__plugins_OokTech_SubmitForm_action-submitform.js`. You will need to base64 encode your auth code first. 
