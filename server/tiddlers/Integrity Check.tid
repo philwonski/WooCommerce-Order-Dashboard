@@ -1,0 +1,9 @@
+created: 20210717143139098
+modified: 20210717170608985
+tags: 
+title: Integrity Check
+type: text/vnd.tiddlywiki
+
+<div style="text-align:left; margin-left: 20px; padding-top: 20px;">
+<$list filter="[tag[Order]!sort[title]get[title]removeprefix[New%20Order%20]]"><span style="font-size: 150%; line-height:1.2;">{{!!title}}</span><br></$list>
+</div>

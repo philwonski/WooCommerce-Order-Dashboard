@@ -1,0 +1,33 @@
+created: 20210715141705739
+modified: 20210815170833594
+tags: $:/tags/Macro
+title: mymacros
+type: text/vnd.tiddlywiki
+
+\define TWILIO_URL()
+https://api.twilio.com/2010-04-01/Accounts/xxx_YOUR_SECRET_CODE_xxx/Messages.json
+\end
+
+\define prettyphone1(phone)
+<$list filter="[[$phone$]removeprefix[+1]]">{{!!title}}</$list>
+\end
+
+\define prettyphone(phone)
+<$list filter="[[$phone$]butfirst[2]]"/>
+\end
+
+\define switchphone(phone)
+<$action-setfield $index="To" $value=<<phone>> />
+\end
+
+<$macrocall $name="prettyphone" phone={{New%20Order%2012809!!phone}}/>
+
+<hr>
+
+{{New%20Order%2012809!!phone}}
+
+<hr>
+
+trim:
+<$list filter="[{New%20Order%2012809!!phone}trim[3]]"/>
+

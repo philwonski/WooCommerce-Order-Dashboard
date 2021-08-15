@@ -1,0 +1,37 @@
+created: 20210714161259293
+modified: 20210815170729404
+tags: 
+title: send text 0.1
+type: text/vnd.tiddlywiki
+
+\define specialurl()
+xxxx
+\end
+
+\define sendaction()
+<$action-submitform $url="$(specialurl)$" $tiddler="SMS- Ready in 1 hour"/>
+\end
+
+<$wikify name="specialurl" text=<<specialurl>> >
+
+<$button>Send to special url
+<<sendaction>></$button>
+
+<hr>
+
+https://xxxx.m.pipedream.net
+
+<$button>Send hard-coded to twilio
+<$action-submitform $url="https://api.twilio.com/2010-04-01/Accounts/xxxxxx/Messages.json" $tiddler="SMS- Ready in 1 hour"/></$button>
+
+<hr>
+
+<$button>Send JSON tid
+<$action-submitform $url="https://xxxxx.m.pipedream.net" $tiddler="SMS- Ready in 1 hour"/></$button>
+
+<hr>
+
+<$button>Send TID
+<$action-submitform $url="https://xxxx.m.pipedream.net" $tiddler="SMS-1hr"/></$button>
+
+[[submit code|$:/plugins/OokTech/SubmitForm/action-submitform.js]]

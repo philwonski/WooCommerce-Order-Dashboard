@@ -1,0 +1,86 @@
+.pickship { color: blue; font-size: 150%; font-weight: bold; margin-left: 30%; }
+
+
+table tfoot tr td { background-color: white;}
+
+[data-tags*="Home"] .tc-titlebar {
+ display: none;
+ height: 0px;
+}
+
+[data-tags*="Home"] .tc-subtitle {
+ display: none;
+height: 0px;
+}
+
+[data-tags*="Home"] .tc-tags-wrapper {
+ display: none;
+height: 0px;
+}
+
+[data-tags*="Home"] {
+ background-color: transparent;
+ border: none;
+}
+
+.textbutton { margin-bottom: 8px; } 
+
+.tc-alert {display: none;}
+
+.table {border: 0px; }
+
+.table tr { border: 0px; }
+
+.table td { border: 0px; }
+
+#header_wrapper {display: none;}
+
+#template_header_image td {display: none;}
+
+.new { background-color: green; }
+
+.inprogress { background-color: #00537B !important; }
+
+.complete { background-color: DimGrey !important;}
+
+.archived { background-color: FireBrick !important;}
+
+.issue { background-color: FireBrick !important;}
+
+.orderbutton { width: 100%; min-height: 95px; color: white; background-color: green;}
+
+.ordernum{ font-weight: bold;}
+
+.day { font-size: 80%; color: gainsboro;}
+
+.time { font-size: 160%;  font-weight: bold;}
+
+.firstitem{}
+
+.plus{}
+
+.phone { font-size: 120%;}
+
+.tc-modal-wrapper { position: fixed; overflow: auto; overflow-y: scroll; top: 0; right: 0; bottom: 0; left: 0; z-index: 900; }
+
+.tc-modal-backdrop { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 1000; background-color: #333333; }
+
+.tc-modal { z-index: 1100; background-color: #ffffff; border: 1px solid #999999; }
+
+@media (max-width: 55em) { .tc-modal { position: fixed; top: 1em; left: 1em; right: 1em; }
+
+.tc-modal-body { overflow-y: auto; max-height: 550px; max-height: 60vh; } }
+
+@media (min-width: 55em) { .tc-modal { position: fixed; top: 2em; left: 10%; width: 80%; }
+
+.tc-modal-body { overflow-y: auto; max-height: 950px; max-height: 60vh; } }
+
+.tc-modal-header { padding: 9px 15px; border-bottom: 1px solid #eeeeee; }
+
+.tc-modal-header h3 { margin: 0; line-height: 30px; }
+
+.tc-modal-header img, .tc-modal-header svg { width: 1em; height: 1em; }
+
+.tc-modal-body { padding: 0px; background-color: #f7f7f7;}
+
+.tc-modal-footer { padding: 14px 15px 15px; margin-bottom: 0; text-align: right; background-color: #f5f5f5; border-top: 1px solid #dddddd; }

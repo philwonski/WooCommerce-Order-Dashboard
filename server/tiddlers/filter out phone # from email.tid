@@ -1,0 +1,7 @@
+created: 20210713110105363
+modified: 20210713110501633
+tags: 
+title: filter out phone # from email
+type: text/vnd.tiddlywiki
+
+<$list filter="[[New%20Order%2012789]get[text]splitregexp[%09%09%09%09%09%09%09%09%09%3Cbr%3E]]"/>

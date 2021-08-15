@@ -1,0 +1,78 @@
+caption: Today's Orders
+created: 20210716100614066
+modified: 20210801190331438
+tags: 
+title: ListOrders_buttons
+type: text/vnd.tiddlywiki
+
+\define oldlist()
+<$list filter="[tag[Order]!sort[title]]" variable="orders">
+<$list filter="[<orders>]"><$list filter="[all[current]get[title]removeprefix[New%20Order%20]] +[decodeuri[]]"></$list> - {{!!day}} - {{!!time}} - <$list filter="[all[current]get[phone]removeprefix[+1]]"/></$list> {{!!first}} <br><br></$list>
+\end
+
+\define dayrefresh()
+<$button style="border: 0px; background-color: transparent;"><$action-setfield $tiddler="DayCheck" $field="today" $value=<<now "MMM DD, YYYY">> />{{$:/core/images/new-journal-button}}</$button>
+\end
+
+\define phoneswitch()
+<$list filter="[tag[TextMsg]]" template="Template/ChangeNumbers"/>
+\end
+
+\define closer()
+"""<$button style="float: right;"><$action-sendmessage $message="tm-close-tiddler"/>close</$button> <div style="float:none; clear:both"></div>"""
+\end
+
+\define orderbuttons()
+<$list filter="[tag[Order]day:{DayCheck!!today}sort[weight]] -[tag[Complete]get[subtitle]]">
+<$button class={{{ [tag{!!title}sort[created]limit[1]get[newclass]else[orderbutton]] }}} >
+<$action-createtiddler $basetitle={{!!subtitle}} tags={{!!title}} newclass="orderbutton"/>
+<$action-setfield $tiddler="SMS-OrderComplete" $index="To" $value={{!!phone}} />
+<$action-setfield $tiddler="SMS-PROBLEM" $index="To" $value={{!!phone}} />
+<$action-setfield $tiddler="SMS-OrderTimeConfirmed" $index="To" $value={{!!phone}} />
+<$action-setfield $tiddler="SMS-OrderTimeConfirmed" $index="Body" $value={{{ [{!!time}addsuffix{Msg-ReadyTimeConfirmed}] }}} />
+<$action-setfield $tiddler="SMS-OrderTimeUNAVAILABLE" $index="To" $value={{!!phone}} />
+<$action-setfield $tiddler="SMS-OrderTimeUNAVAILABLE" $index="Body" $value={{{ [{!!time}addsuffix{Msg-ReadyTimeUnavailable}] }}} />
+<$action-setfield $tiddler="SMS-ReadyTimeUnavailable10" $index="To" $value={{!!phone}} />
+<$action-setfield $tiddler="SMS-ReadyTimeUnavailable10" $index="Body" $value={{{ [{!!time}addsuffix{Msg-ReadyTimeUnavailable10}] }}} />
+<$action-setfield $tiddler="SMS-ReadyTimeUnavailable20" $index="To" $value={{!!phone}} />
+<$action-setfield $tiddler="SMS-ReadyTimeUnavailable20" $index="Body" $value={{{ [{!!time}addsuffix{Msg-ReadyTimeUnavailable20}] }}} />
+<$action-setfield $tiddler="SMS-ReadyTimeUnavailable30" $index="To" $value={{!!phone}} />
+<$action-setfield $tiddler="SMS-ReadyTimeUnavailable30" $index="Body" $value={{{ [{!!time}addsuffix{Msg-ReadyTimeUnavailable30}] }}} />
+<$action-setfield $tiddler="SMS-OrderOut4D" $index="To" $value={{!!phone}} />
+
+<$action-sendmessage $message="tm-modal" $param="viewOrder_pretty" order={{!!title}} />
+<$action-setfield $tiddler="viewOrder_pretty" subtitle={{{ [{!!subtitle}addsuffix[ ]addsuffix<closer>] }}} />
+
+<div style="float: left; width: 50%;">
+
+<$list filter="[all[current]get[title]removeprefix[New%20Order%20]] +[decodeuri[]]"><span class="ordernum">{{!!title}}</span></$list> 
+<br>
+<span class="time"> {{!!time}} </span><br>
+<span class="day">{{!!day}}</span>
+</div>
+
+<div style="float: left; width: 50%;">
+
+<span class="firstitem"> {{!!first}} </span> <$list filter="[all[current]get[second]compare:number:gt[1]then[plus other items...]]"><span class="plus">{{!!title}}</span></$list><br>
+
+<$list filter="[all[current]get[phone]removeprefix[+1]]"><span class="phone">{{!!title}}</span></$list><br>
+</div><div style="float: none; clear:both;"></div>
+</$button>
+<br><br>
+</$list>
+\end
+
+\define modaltest()
+
+<$button>
+<$action-sendmessage $message="tm-modal" $param="viewOrder_pretty" order="New%20Order%2012809" />
+Modal
+</$button>
+\end
+
+<div style="float:right;">
+{{DayCheck!!today}}
+</div>
+<div style="float:none;clear:both;"></div>
+
+<<orderbuttons>>

@@ -1,0 +1,7 @@
+created: 20210712220837084
+modified: 20210715211512919
+tags: 
+title: ListOrders_full
+type: text/vnd.tiddlywiki
+
+<$list filter="[tag[Order]!sort[title]]" variable="orders"><$list filter="[<orders>get[text]] +[decodeuri[]]">{{!!title}}</$list><br><br></$list>

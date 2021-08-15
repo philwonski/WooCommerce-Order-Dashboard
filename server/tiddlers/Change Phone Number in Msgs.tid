@@ -1,0 +1,10 @@
+created: 20210715212323277
+modified: 20210716115802016
+tags: 
+title: Change Phone Number in Msgs
+type: text/vnd.tiddlywiki
+
+<$vars phone="+12018675309">
+<$button><$list filter="[tag[TextMsg]]" template="Template/ChangeNumbers"/>
+Update #s</$button>
+</$vars>

@@ -1,0 +1,55 @@
+caption: Archived
+created: 20210717142900724
+modified: 20210717183233544
+tags: 
+title: ListOrders_buttons_archived
+type: text/vnd.tiddlywiki
+
+\define oldlist()
+<$list filter="[tag[Order]!sort[title]]" variable="orders">
+<$list filter="[<orders>]"><$list filter="[all[current]get[title]removeprefix[New%20Order%20]] +[decodeuri[]]"></$list> - {{!!day}} - {{!!time}} - <$list filter="[all[current]get[phone]removeprefix[+1]]"/></$list> {{!!first}} <br><br></$list>
+\end
+
+\define phoneswitch()
+<$list filter="[tag[TextMsg]]" template="Template/ChangeNumbers"/>
+\end
+
+\define orderbuttons()
+<$list filter="[tag[Order]day:{DayCheck!!today}sort[weight]curstate[orderbutton archived]]">
+<$button class={{!!curstate}} >
+<$action-setfield $tiddler="SMS- Ready in 1 hour" $index="To" $value={{!!phone}} />
+<$action-setfield $tiddler="SMS-OrderComplete" $index="To" $value={{!!phone}} />
+<$action-setfield $tiddler="SMS-OrderTimeConfirmed" $index="To" $value={{!!phone}} />
+<$action-setfield $tiddler="SMS-OrderTimeUNAVAILABLE" $index="To" $value={{!!phone}} />
+
+<$action-sendmessage $message="tm-modal" $param="viewOrder_pretty" order={{!!title}} />
+<$action-setfield $tiddler="viewOrder_pretty" subtitle={{!!subtitle}} />
+
+<div style="float: left; width: 50%;">
+
+<$list filter="[all[current]get[title]removeprefix[New%20Order%20]] +[decodeuri[]]"><span class="ordernum">{{!!title}}</span></$list> 
+<br>
+<span class="time"> {{!!time}} </span><br>
+<span class="day">{{!!day}}</span>
+</div>
+
+<div style="float: left; width: 50%;">
+
+<span class="firstitem"> {{!!first}} </span> <$list filter="[all[current]get[second]compare:number:gt[1]then[plus other items...]]"><span class="plus">{{!!title}}</span></$list><br>
+
+<$list filter="[all[current]get[phone]removeprefix[+1]]"><span class="phone">{{!!title}}</span></$list><br>
+</div><div style="float: none; clear:both;"></div>
+</$button>
+<br><br>
+</$list>
+\end
+
+\define modaltest()
+
+<$button>
+<$action-sendmessage $message="tm-modal" $param="viewOrder_pretty" order="New%20Order%2012809" />
+Modal
+</$button>
+\end
+
+<<orderbuttons>>

@@ -1,0 +1,95 @@
+closeactions: <$button><$action-sendmessage $message="tm-close-tiddler"/>close</$button>
+created: 20210715211430624
+modified: 20210815170748584
+subtitle: 12962 """<$button style="float: right;"><$action-sendmessage $message="tm-close-tiddler"/>close</$button> <div style="float:none; clear:both"></div>"""
+tags: 
+title: viewOrder_pretty
+type: text/vnd.tiddlywiki
+
+\define prettyorder(order)
+<$list filter="[[$order$]get[text]] +[decodeuri[]]">{{!!title}}</$list>
+\end
+<div style="background-color: #f7f7f7; margin-left: 30px;">
+
+<div style="float: left;">
+<$button class="textbutton">Ready Time Confirmed
+
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} newclass="orderbutton inprogress"/>
+
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} contact_10={{{ [<now>addsuffix[: ]addsuffix{SMS-OrderTimeConfirmed##Body}] }}} />
+
+<$action-submitform $url=<<TWILIO_URL>> $tiddler="SMS-OrderTimeConfirmed"/></$button><br>
+<$button class="textbutton">Ready for pickup
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} contact_11={{{ [<now>addsuffix[: ]addsuffix{SMS-OrderComplete##Body}] }}} />
+<$action-submitform $url=<<TWILIO_URL>> $tiddler="SMS-OrderComplete"/>
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} newclass="orderbutton complete"/>
+<$action-createtiddler $basetitle={{{ [<order>addsuffix[_Complete]] }}} subtitle=<<order>> tags="Complete" />
+</$button><br>
+<$button class="textbutton">Out for delivery
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} contact_12={{{ [<now>addsuffix[: ]addsuffix{SMS-OrderOut4D##Body}] }}} />
+<$action-submitform $url=<<TWILIO_URL>> $tiddler="SMS-OrderOut4D"/>
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} newclass="orderbutton complete"/>
+<$action-createtiddler $basetitle={{{ [<order>addsuffix[_Complete]] }}} subtitle=<<order>> tags="Complete" />
+</$button>
+</div>
+
+<div style="float: left; margin-left: 10%;">
+<$button class="textbutton">+10 min
+
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} newclass="orderbutton inprogress"/>
+
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} contact_20={{{ [<now>addsuffix[: ]addsuffix{SMS-ReadyTimeUnavailable10##Body}] }}} />
+
+<$action-submitform $url=<<TWILIO_URL>> $tiddler="SMS-ReadyTimeUnavailable10"/></$button>
+<$button class="textbutton">+20 min
+
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} newclass="orderbutton inprogress"/>
+
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} contact_21={{{ [<now>addsuffix[: ]addsuffix{SMS-ReadyTimeUnavailable20##Body}] }}} />
+
+<$action-submitform $url=<<TWILIO_URL>> $tiddler="SMS-ReadyTimeUnavailable20"/></$button>
+<$button class="textbutton">+30 min
+
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} newclass="orderbutton inprogress"/>
+
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} contact_22={{{ [<now>addsuffix[: ]addsuffix{SMS-ReadyTimeUnavailable30##Body}] }}} />
+
+<$action-submitform $url=<<TWILIO_URL>> $tiddler="SMS-ReadyTimeUnavailable30"/></$button><br>
+</div>
+
+<div style="float: left; margin-left: 10%;">
+<$button class="textbutton"><span style="fill:red;">{{$:/core/images/warning}}</span> Time UNAVAIL - We'll Call You
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} newclass="orderbutton issue"/>
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} contact_30={{{ [<now>addsuffix[: ]addsuffix{SMS-OrderTimeUNAVAILABLE##Body}] }}} />
+<$action-submitform $url=<<TWILIO_URL>> $tiddler="SMS-OrderTimeUNAVAILABLE"/></$button><br> <$button class="textbutton"> <span style="fill:red;">{{$:/core/images/warning}}</span> ISSUE - Call THD ASAP
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} newclass="orderbutton issue"/>
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} contact_31={{{ [<now>addsuffix[: ]addsuffix{SMS-PROBLEM##Body}] }}} />
+<$action-submitform $url=<<TWILIO_URL>> $tiddler="SMS-PROBLEM"/></$button> 
+</div>
+
+
+<div style="float:none;clear:both;"></div>
+<$list filter="[tag<order>sort[created]limit[1]get[contact_10]]">{{!!title}}<br></$list>
+<$list filter="[tag<order>sort[created]limit[1]get[contact_20]]">{{!!title}}<br></$list>
+<$list filter="[tag<order>sort[created]limit[1]get[contact_21]]">{{!!title}}<br></$list>
+<$list filter="[tag<order>sort[created]limit[1]get[contact_22]]">{{!!title}}<br></$list>
+<$list filter="[tag<order>sort[created]limit[1]get[contact_30]]">{{!!title}}<br></$list>
+<$list filter="[tag<order>sort[created]limit[1]get[contact_31]]">{{!!title}}<br></$list>
+<$list filter="[tag<order>sort[created]limit[1]get[contact_11]]">{{!!title}}<br></$list>
+<$list filter="[tag<order>sort[created]limit[1]get[contact_12]]">{{!!title}}<br></$list>
+
+<div class="pickship">
+<$list filter="[<order>get[time]]">{{!!title}}</$list> <$list filter="[<order>get[pickship]removeprefix[3EShipping:%3C/th%3E%0A%09%09%09%09%09%09%3Ctd%20class=%22td%22%20style=%22color:%20#636363;%20border:%200px%20solid%20#e5e5e5;%20vertical-align:%20middle;%20padding:%2012px;%20text-align:%20left;%22%3E]] +[decodeuri[]]"><mark>{{!!title}}</mark></$list>
+</div>
+
+
+<div style="width:100%; align: center; margin-top: -90px; padding-left: 15%;">
+<$macrocall $name="prettyorder" order=<<order>>/>
+</div>
+</div>
+<br><br>
+<$button class="textbutton">
+<$action-setfield $tiddler={{{ [tag<order>sort[created]limit[1]] }}} newclass="orderbutton archived"/>
+<$action-createtiddler $basetitle={{{ [<order>addsuffix[_Complete]] }}} tags="Complete" subtitle=<<order>> />
+Refunded/Archived
+</$button>

@@ -1,0 +1,13 @@
+created: 20210715113642399
+modified: 20210715211900267
+tags: 
+title: ListOrders_title
+type: text/vnd.tiddlywiki
+
+\define oldlist()
+<$list filter="[tag[Order]!sort[title]]" variable="orders">
+<$list filter="[<orders>]"><$list filter="[all[current]get[title]removeprefix[New%20Order%20]] +[decodeuri[]]"></$list> - {{!!day}} - {{!!time}} - <$list filter="[all[current]get[phone]removeprefix[+1]]"/></$list> {{!!first}} <br><br></$list>
+\end
+
+<$list filter="[tag[Order]!sort[title]]">
+<$list filter="[all[current]get[title]removeprefix[New%20Order%20]] +[decodeuri[]]">{{!!title}}</$list> - {{!!day}} - {{!!time}} - <$list filter="[all[current]get[phone]removeprefix[+1]]">{{!!title}}</$list> - {{!!first}} <$list filter="[all[current]get[second]compare:number:gt[1]then[plus other items...]]">{{!!title}}</$list><br><br></$list>

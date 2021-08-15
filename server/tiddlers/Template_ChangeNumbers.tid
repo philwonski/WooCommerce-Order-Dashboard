@@ -1,0 +1,7 @@
+created: 20210715212433325
+modified: 20210717132648783
+tags: 
+title: Template/ChangeNumbers
+type: text/vnd.tiddlywiki
+
+<$action-setfield $index="To" $value={{!!title}} />

@@ -1,0 +1,19 @@
+#set($inputRoot = $input.path('$')) 
+{
+
+"title" : "$inputRoot.title",
+"text" : "$inputRoot.text",
+"phone" : "$inputRoot.phone",
+"address" : "$inputRoot.address",
+"day" : "$inputRoot.day",
+"time" : "$inputRoot.time",
+"first" : "$inputRoot.first",
+"second" : "$inputRoot.second",
+"third" : "$inputRoot.third",
+"tags" : "Order",
+"weight" : "$inputRoot.weight",
+"subtitle" : "$inputRoot.caption",
+"curstate" : "orderbutton",
+"pickship" : "$inputRoot.pickship"
+
+}

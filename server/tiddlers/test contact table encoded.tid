@@ -1,0 +1,7 @@
+created: 20210713122125269
+modified: 20210815171015957
+tags: 
+title: test contact table encoded
+type: text/vnd.tiddlywiki
+
+%3Ctable%20id=%22addresses%22%20cellspacing=%220%22%20cellpadding=%220%22%20border=%220%22%20style=%22width:%20100%25;%20vertical-align:%20top;%20margin-bottom:%2040px;%20padding:%200;%22%3E%0A%09%3Ctr%3E%0A%09%09%3Ctd%20valign=%22top%22%20width=%2250%25%22%20style=%22text-align:%20left;%20font-family:%20'Helvetica%20Neue',%20Helvetica,%20Roboto,%20Arial,%20sans-serif;%20border:%200;%20padding:%200;%22%3E%0A%09%09%09%3Ch2%20style='color:%20#08447b;%20display:%20block;%20font-family:%20%22Helvetica%20Neue%22,%20Helvetica,%20Roboto,%20Arial,%20sans-serif;%20font-size:%2018px;%20font-weight:%20bold;%20line-height:%20130%25;%20margin:%200%200%2018px;%20text-align:%20left;'%3EBilling%20address%3C/h2%3E%0A%0A%09%09%09%3Caddress%20class=%22address%22%20style=%22padding:%2012px;%20color:%20#636363;%20border:%201px%20solid%20#e5e5e5;%22%3E%0A%09%09%09%09ph%20wo%3Cbr%3E123%20g%20p%3Cbr%3Esouth%20orange,%20NJ%2007079%09%09%09%09%09%09%09%09%09%3Cbr%3E2018675309%09%09%09%09%09%09%09%09%09%09%09%09%09%3Cbr%3Edontemailme@gmail.com%09%09%09%09%09%09%09%3C/address%3E%0A%09%09%09%09%09%3C/td%3E%0A%09%09%09%3C/tr%3E%0A%3C/table%3E%0A

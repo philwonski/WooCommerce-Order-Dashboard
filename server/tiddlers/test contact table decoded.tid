@@ -1,0 +1,7 @@
+created: 20210713122152275
+modified: 20210713122245207
+tags: 
+title: test contact table decoded
+type: text/vnd.tiddlywiki
+
+<$list filter="[[test contact table encoded]get[text]] +[decodeuri[]]"/>

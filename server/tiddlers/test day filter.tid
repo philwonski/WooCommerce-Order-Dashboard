@@ -1,0 +1,7 @@
+created: 20210716124149543
+modified: 20210716124421399
+tags: 
+title: test day filter
+type: text/vnd.tiddlywiki
+
+<$list filter="[tag[Order]day{DayCheck!!today}!sort[title]]"/>
