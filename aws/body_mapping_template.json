@@ -10,10 +10,10 @@
 "first" : "$inputRoot.first",
 "second" : "$inputRoot.second",
 "third" : "$inputRoot.third",
-"tags" : "Order",
+"tags" : "$inputRoot.tags",
 "weight" : "$inputRoot.weight",
 "subtitle" : "$inputRoot.caption",
-"curstate" : "orderbutton",
+"curstate" : "$inputRoot.curstate",
 "pickship" : "$inputRoot.pickship"
 
 }

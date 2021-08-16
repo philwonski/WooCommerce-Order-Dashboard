@@ -103,7 +103,7 @@ if (time == '8:30am') {
 };
 
 // take all the fun vars I assigned and make a JSON "table" out of them
-let plainjson = { "title" : title, "text" : text, "address" : address, "phone" : phone, "day" : day, "time" : time, "first" : first, "second" : second, "weight" : weight, "caption" : ordernum, "pickship" : pickship };
+let plainjson = { "title" : title, "text" : text, "address" : address, "phone" : phone, "day" : day, "time" : time, "first" : first, "second" : second, "weight" : weight, "caption" : ordernum, "pickship" : pickship, "tags" : "Order", "curstate" : "orderbutton" };
 
 // make sure my json is typed 
 let myjson = JSON.stringify(plainjson);
