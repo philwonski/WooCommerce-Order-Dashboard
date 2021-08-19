@@ -12,7 +12,7 @@ app.use(express.json());
 app.post('/', (req, res) => {
     console.log(req.body);
     res.status(201).send(req.body.order + ' logged');
-    let order_name = '../tw/tiddlers' + req.body.order + '.json';
+    let order_name = '../server/tiddlers' + req.body.order + '.json';
     let myorder = JSON.stringify(req.body);
     fs.writeFileSync(order_name, myorder);
 });
