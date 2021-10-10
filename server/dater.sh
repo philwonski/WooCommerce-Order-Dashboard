@@ -3,5 +3,5 @@
 cat > /root/thdash/tiddlers/DayCheck.tid << EOF
 title: DayCheck
 tag: robot
-today: $(date +%B\%e,\ %Y)
+today: $(date +%B\ %d,\ %Y)
 EOF
